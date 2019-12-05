@@ -18,6 +18,19 @@ import org.springframework.beans.factory.annotation.Value;
 @RestController
 public class DataRESTController {
   
-  // Place code here.
+  @Value("${app.topic.data}") // Set in application.properties.
+  private String topic;
+  
+  private DataProducerService producer;
+  
+  @Autowired 
+  public DataRESTController(DataProducerService producer) {
+    this.producer = producer;
+  }
+ 
+  @RequestMapping(value = "/send/rest-data", method = RequestMethod.GET) 
+  public void postDataData( @RequestParam("value") int value , @RequestParam("content") String content ) {
+    this.producer.produceData(new Data(content,value));
+  }
   
 }
