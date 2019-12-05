@@ -13,14 +13,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class DataConsumerService {
 
-    @Autowired
-    private SimpMessagingTemplate template;
-    
-    @KafkaListener(topics = "${app.topic.data}")
-    public void receive(@Payload Data data, @Headers MessageHeaders headers) {
-  
-        template.convertAndSend("/receive/websocket-data", data);
-        
-    }
+    // Place code here.
 
 }
