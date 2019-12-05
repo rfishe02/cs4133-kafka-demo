@@ -3,23 +3,14 @@ var stompClient = null;
 
 function socketConnect() {
 
-  var socket = new SockJS('/websocket-traffic');
-  stompClient = Stomp.over(socket);
-  
-  stompClient.connect({}, function (frame) {
-    
-    $("#connect-button").prop('disabled', true); 
-    
-    stompClient.subscribe('/receive/websocket-data', function (data) {
-      showData(JSON.parse(data.body).value,JSON.parse(data.body).content);
-    });
-    
-  });
+  // Create a socket and subscribe to a consumer mapping.
     
 }
 
 function sendSocketMessage() {
-  stompClient.send("/send/websocket-data", {}, JSON.stringify({'value': $("#socket-value-input").val(),'message': $("#socket-content-input").val()}));
+  
+  // Send a message.
+  
 }
 
 function socketDisconnect() {
