@@ -11,21 +11,6 @@ import org.springframework.web.socket.config.annotation.WebSocketMessageBrokerCo
 @EnableWebSocketMessageBroker
 public class WebSocketConfig implements WebSocketMessageBrokerConfigurer {
 
-    @Override
-    public void configureMessageBroker(MessageBrokerRegistry config) {
-        config.enableSimpleBroker("/receive");
-        config.setApplicationDestinationPrefixes("/send");
-    }
-
-    @Override
-    public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/websocket-traffic").withSockJS();
-    }
-    
-    /* 
-     * Place the example code below.
-     */
-    
-    
+    // Place your code here.
     
 }
