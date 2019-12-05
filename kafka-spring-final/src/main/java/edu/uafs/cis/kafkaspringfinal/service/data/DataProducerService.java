@@ -12,17 +12,6 @@ import org.springframework.stereotype.Service;
 @Service
 public class DataProducerService {
   
-  @Value("${app.topic.data}")
-  private String topic;
-  
-  @Autowired
-  private KafkaTemplate<String, Data> template;
-
-  public void produceData(Data data){
-
-    Message<Data> message = MessageBuilder.withPayload(data).setHeader(KafkaHeaders.TOPIC, topic).build();
-    template.send(message);
-    
-  }
+  // Place code here.
 
 }
