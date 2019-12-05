@@ -1,0 +1,517 @@
+<!DOCTYPE html>
+<html lang="en" >
+<head>
+  <meta charset="UTF-8">
+  <title>Apache Kafka</title>
+  <link rel="stylesheet" href="./style.css">
+   <link href="bootstrap/css/bootstrap.min.css" rel="stylesheet">
+</head>
+
+
+<body>
+<div class="hero" style="background-image: url(https://images.unsplash.com/photo-1478774519940-123bd0ab1e0b?ixlib=rb-1.2.1&auto=format&fit=crop&w=2550&q=80);">
+  <div class="header">
+    <h1 class="headline" style="color: #fff">Apache Kafka</h1>
+    <h2 class="subheadline">Renae Fisher, Clayton Bond</h2>
+  </div>
+</div>
+
+<nav class="navbar sticky-top navbar-light bg-light" id="navbar">
+  <a class="navbar-brand active" href="javascript:void(0)">
+    
+    <div class="col-md-12 justify-content-center text-center">
+      <img src="images/logo.png" height="35" width="35">
+      <a href="#" style="padding-left: 3%; color: grey">Home</a>
+      <a href="#intro" style="padding-left: 3%; color: grey">Introduction</a>
+      <a href="#tech" style="padding-left: 3%; color: grey">Technical</a>
+      <a href="#case" style="padding-left: 3%; color: grey">Use Case</a>
+      <a href="#tutorial" style="padding-left: 3%; color: grey">Tutorial</a>
+      <a href="#" style="padding-left:65%" ></a>
+    </div>
+  </a>
+</nav>
+
+<dir id="intro"></dir>
+
+<section class="panels">
+  <div class="panel">
+    <div class="col-md-12 row">
+
+      <div class="col-md-6">
+        <h1 style="font-size: 40px"><span style="color: #434A50">Introduction</span> <h2 style="font-size: 25px"><span style="color: lightgrey">& Atmosphere</span></h2></h1>
+      </div>
+
+      <div class="col-md-6" style="text-align: right;">
+        <h1><span style="color: lightgrey; font-size: 35px;">code.cis.uafs.edu/cloud101</span></h1>
+        <h2 style="font-size: 15px; color: #434A50;">VM Username: admin - Password: UApass50</h2>
+      </div>
+    </div>
+  </div>
+
+  <div class="panel col-md-12">
+    <div class="col-md-6">
+      <img alt="" src="https://images.unsplash.com/photo-1484557052118-f32bd25b45b5?ixlib=rb-1.2.1&auto=format&fit=crop&w=2250&q=80"/>
+    </div>
+    <div class="col-md-6">
+      <h3 style="color: lightblue">Background</h3>
+      <p> <span style="color: darkorange">Kafka</span> was originally developed at LinkedIn in 2011 and has improved a lot since then. Nowadays it is a whole platform, allowing you to redundantly store large amounts of data, have a message bus with huge throughput (millions/sec) and use real-time stream processing on the data that goes through it all at once.
+        <br><br>
+      Named after author Franz Kafka because it is "a system optimized for writing", stripped down to its core, <span style="color: darkorange">Kafka</span> is a <b>distributed</b>, <b>horizontally-scalable</b>, <b>fault-tolerant</b>, commit log.</p>
+    </div>
+  </div>
+  
+  <div class="panel">
+    <div>
+      <h3 style="color: lightblue">Distributed</h3>
+      <p>A distributed system is one which is split into multiple running machines, all of which work together in a cluster to appear as one single node to the end user. <span style="color: darkorange">Kafka</span> is distributed in the sense that it stores, receives and sends messages on different nodes (called <b>brokers</b>).
+      <br><br>
+      The benefits to this approach are high scalability and fault-tolerance.</p>
+    </div>
+    <div>
+      <img alt="" src="https://images.unsplash.com/photo-1525090369778-2532e6c61cea?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2252&q=80"/>
+    </div>
+  </div>
+  
+  <div class="panel">
+    <div>
+      <img alt="" src="https://images.unsplash.com/photo-1487284122274-e864e9dec2bf?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2251&q=80"/>
+    </div>
+    <div>
+      <h3 style="color: lightblue">Horizontally-scalable</h3>
+      <p>
+        Let's say you have a traditional database server which is starting to get overloaded. One way to get this solved is to simply increase the resources (<i>CPU, RAM, SSD</i>) on the server. This is called <b>vertical scaling</b> — where you add more resources to the machine. There are two big disadvantages to scaling upwards. There are limits defined by the hardware. You cannot scale upwards indefinitely. And secondly, it usually requires downtime, something which big corporations cannot afford.
+      </p>
+      <p>
+        Horizontal scalability is what <span style="color: darkorange">Kafka</span> uses, it solves the same problem by throwing more machines at it. Adding a new machine does not require downtime nor are there any limits to the amount of machines you can have in your cluster. The catch is that not all systems support horizontal scalability, as they are not designed to work in a cluster and those that are are usually more complex to work with.
+      </p>
+    </div>
+  </div>
+  
+  <div class="panel">
+    <div>
+      <h3 style="color: lightblue">Fault-tolerant</h3>
+      <p>
+        Something that emerges in non-distributed systems is that they have a single point of failure (SPoF). If your single database server fails (as machines do) for whatever reason, you've lost whatever you were working on.
+      </p>
+      <p>
+        Distributed systems are designed in such a way to accommodate failures in a configurable way. In a 5-node <span style="color: darkorange">Kafka</span> cluster, you can have it continue working even if 2 of the nodes are down. It is worth noting that fault-tolerance is at a direct tradeoff with performance, as in the more fault-tolerant your system is, the less performant it is.
+      </p>
+    </div>
+    <div>
+      <img alt="" src="https://images.unsplash.com/photo-1521624759875-6a7bf5489d9e?ixlib=rb-0.3.5&q=85&fm=jpg&crop=entropy&cs=srgb&ixid=eyJhcHBfaWQiOjE0NTg5fQ&s=e45392c1348502b86001603488d19cd0"/>
+    </div>
+  </div>
+
+  <div class="panel">
+      <div class="">
+        <img alt="" src="https://images.unsplash.com/photo-1500252124339-44ed473934dd?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2250&q=80"/>
+      </div>
+      <div>
+        <h3 style="color: lightblue">Commit Log</h3>
+        <p>
+          A commit log (also referred to as write-ahead log, transaction log) is a persistent ordered data structure which only supports appends. You cannot modify nor delete records from it. It is read from left to right and guarantees item ordering.
+        </p>
+        <img style="width: 70%; box-shadow: 0 0px 0px 0px rgba(0,0,0,.6); padding-left: 25%; padding-bottom: 10px;" src="images/graph1.png">
+        <p id="tech">
+          <span style="color: darkorange">Kafka</span> stores all of its messages to disk and having them ordered in the structure lets it take advantage of sequential disk reads. Reads and writes are a constant time O(1) (knowing the record ID), which compared to other structure’s O(log N) operations on disk is a huge advantage, as each disk seek is expensive. 
+        </p>
+      </div>
+    </div>
+
+
+
+  <div class="panel">
+    <div class="col-md-12">
+      <h1 style="font-size: 40px"><span style="color: #434A50">How Does it Work</span> <h2 style="font-size: 25px"><span style="color: lightgrey">& Technical Overview</span></h2></h1>
+      <hr class="mb-4">
+    </div>
+  </div>
+
+  <div class="panel" style="justify-content: center;">
+    <div class="col-md-7">
+      <h3 style="color: lightblue">Structure</h3>
+      <p>
+        Applications (<b>producers</b>) send messages (<b>records</b>) to a <span style="color: darkorange">Kafka</span> node / cluster (<b>broker</b>) and said messages are processed by other applications called consumers. Said messages get stored in a topic and consumers can subscribe to a topic to receive updates and new information.
+      </p>
+      <img style="width: 70%; box-shadow: 0 0px 0px 0px rgba(0,0,0,.6); padding-left: 25%; padding-bottom: 10px;" src="images/graph4.png">
+      <p>
+        Producers can be any kind of app that is creating or listening for some sort of data, new log lines, sensor data, activity tracking, etc. There's the ones responsibe for pushing data into your <span style="color: darkorange">Kafka</span> cluster.
+      </p>
+      <img style="width: 70%; box-shadow: 0 0px 0px 0px rgba(0,0,0,.6); padding-left: 29%; padding-bottom: 10px;" src="images/topic.png">
+      <p>
+        <span style="color: darkorange">Kafka</span> servers store all incoming messages from publushers for some period of time, and publishes them to a stream of data called a topic. 
+      </p>
+      <p>
+        <span style="color: darkorange">Kafka</span> consumers subscribe to one or more topics and recieve data as it's published.
+      </p>
+      <p>
+        A stream / topic can have many different consumers, all with their own position in the stream maintained.
+      </p>
+      <p>
+        As topics can get large depending on the amount of distinct data being stored, <span style="color: darkorange">Kafka</span> will split them into <b>partitions</b> of a smaller size for better performance and scalability. For example, say you were storing user login requests, you could split them by the first character of the user’s username. Then store them in the same way a stack handles data.
+      </p>
+      <img style="width: 5%; box-shadow: 0 0px 0px 0px rgba(0,0,0,.6); padding-left: 10%; padding-bottom: 30px;" src="images/down.png">
+      
+      <p>
+        In order to avoid two processes reading the same message twice, each partition is tied to only one consumer process per group.
+      </p> 
+
+      <img style="width: 100%; box-shadow: 0 0px 0px 0px rgba(0,0,0,.6); padding-bottom: 30px;" src="images/graph3.png">
+      <p>
+        <span style="color: darkorange">Kafka</span> follows the principle of a dumb broker and smart consumer. This means that <span style="color: darkorange">Kafka</span> does not keep track of what records are read by the consumer and delete them but rather stores them a set amount of time (e.g one day) or until some size threshold is met. Consumers themselves poll <span style="color: darkorange">Kafka</span> for new messages and say what records they want to read. Allowing consumers to pick up where they left off and thus being able to replay and reprocess events.
+      </p> 
+    </div>
+  </div>
+
+
+  <div class="panel" style="justify-content: center;">
+    <div class="col-md-7">
+      <h3 style="color: lightblue">Streaming</h3>
+     <p>
+       We already know a lot about processing data that's on a database, but this assumes that the data is already loaded onto the system. We can take for granted that our data had to come from somewhere and it's not always the best option to have to load all of our data first and then have to process it in big chunks. That's where <span style="color: darkorange">Kafka</span> comes in, you're able to process data as it's received and store it into your cluster or store it into a database like HDFS or HBase.
+     </p>
+     <p>
+       There are many applications of this, you might be monitoring customer behavior data coming from the logs on a web server and transforming those logs into database entries. Stream Processors allow you to transform data as it comes in, transform or restructure the data however needed, then republish to a new topic or store it in a database.
+     </p>
+    </div>
+  </div>
+
+  <div class="panel" style="justify-content: center;">
+    <div class="col-md-7">
+      <h3 style="color: lightblue">Persistence to Disk</h3>
+      <p>
+         <span style="color: darkorange">Kafka</span> actually stores all of its records to disk and does not keep anything in RAM. There are numerous optimizations behind this that make this feasible:
+      </p>
+      <p id="tab">
+        <span style="color: darkorange">Kafka</span> has a protocol which groups messages together. This allows network requests to group messages together and reduce network overhead, the server in turn persist chunk of messages in one go and consumer fetch large linear chunks at once
+      </p>
+      <p id="tab">
+        Linear reads/writes on a disk are fast. The concept that modern disks are slow is because of numerous disk seeks, something that is not an issue in big linear operations.
+      </p>
+      <p id="tab">
+        Said linear operations are heavily optimized by the OS, via read-ahead (prefetch large block multiples) and write-behind (group small logical writes into big physical writes) techniques.
+      </p>
+      <p id="tab">
+        Modern OSes cache the disk in free RAM. This is called pagecache.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel" style="justify-content: center;">
+    <div class="col-md-7">
+      <h3 style="color: lightblue">Data Replication</h3>
+      <p>
+        At all times, one broker “owns” a partition and is the node through which applications write/read from the partition. This is called a <b>partition leader</b>. It replicates the data it receives to <b>N</b> other brokers, called <b>followers</b>. They store the data as well and are ready to be elected as leader in case the leader node dies.
+      </p><br>
+      <img style="width: 90%; box-shadow: 0 0px 0px 0px rgba(0,0,0,.6); padding-left: 5%; padding-bottom: 10px;" src="images/graph5.png">
+      <p><br>
+        In order for this system to work, the nodes have to know who the leaders are at any given point. This is a form of metadata handled by <span style="color: #6dc785">Zookeeper</span>.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel" style="justify-content: center;">
+    <div class="col-md-7">
+      <h3 style="color: lightblue">What is Zookeeper?</h3>
+      <p>
+        <span style="color: #6dc785">Zookeeper</span> is a distributed key-value store. It is highly-optimized for reads but writes are slower. It is most commonly used to store metadata and handle the mechanics of clustering (heartbeats, distributing updates/configurations, etc).
+      </p>
+      <p>
+        It allows clients of the service (the <span style="color: darkorange">Kafka</span> brokers) to subscribe and have changes sent to them once they happen. This is how brokers know when to switch partition leaders. <span style="color: #6dc785">Zookeeper</span> is also extremely fault-tolerant. In this case it's sending info on partition leaders and their health.
+      </p>
+      <img style="width: 90%; box-shadow: 0 0px 0px 0px rgba(0,0,0,.6); padding-left: 5%; padding-bottom: 10px;" src="images/graph6.png">
+      <p id="case">
+        Producer and Consumers used to directly connect and talk to <span style="color: #6dc785">Zookeeper</span> to get this (and other) information. <span style="color: darkorange">Kafka</span> has been moving away from this coupling and since versions 0.8 and 0.9 respectively, clients fetch metadata information from <span style="color: darkorange">Kafka</span> brokers directly, who themselves talk to <span style="color: #6dc785">Zookeeper</span>.
+      </p>
+    </div>
+  </div>
+
+
+
+
+  <div class="panel">
+    <div class="col-md-12">
+      <h1 style="font-size: 40px"><span style="color: #434A50">Use Cases</span> <h2 style="font-size: 25px"><span style="color: lightgrey">& Testimonies</span></h2></h1>
+      <hr class="mb-4">
+    </div>
+  </div>
+
+  <div class="panel">
+    <div>
+      <img alt="" src="https://eccles.utah.edu/wp-content/uploads/2016/10/linkedin-earnings1.png"/>
+    </div>
+    <div>
+      <h3 style="color: lightblue">LinkedIn</h3>
+      <p>
+        Apache <span style="color: darkorange">Kafka</span>  is used at LinkedIn for activity stream data and operational metrics. This powers various products like LinkedIn Newsfeed, LinkedIn Today in addition to offline analytics systems like Hadoop. There are also newer use cases like replacing <a href="https://engineering.linkedin.com/blog/2016/04/kafka-ecosystem-at-linkedin">MySQL replication</a> with <span style="color: darkorange">Kafka</span>.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div>
+      <h3 style="color: lightblue">Netflix</h3>
+      <p>
+        Real-time monitoring and event-processing pipeline, used in their implementation of <a href="https://medium.com/netflix-techblog/announcing-suro-backbone-of-netflixs-data-pipeline-5c660ca917b6">Suro</a>. Based on a dynamically configurable routing rule, Suro dispatches log events to a designated Kafka cluster under a mapped topic.
+      </p>
+    </div>
+    <div>
+      <img alt="" src="https://www.kink.fm/wp-content/uploads/2019/02/Netflix-New-Logo-Animation-2019-1.jpeg"/>
+    </div>
+  </div>
+
+  <div class="panel">
+    <div>
+      <img alt="" src="https://hdwallsource.com/img/2017/12/spotify-logo-computer-wallpaper-62369-64312-hd-wallpapers.jpg"/>
+    </div>
+    <div>
+      <h3 style="color: lightblue">Spotify</h3>
+      <p>
+        Spotify uses <span style="color: darkorange">Kafka</span> as a central component for their <a href="https://www.meetup.com/stockholm-hug/events/121628932">log delivery</a> system. It sends all the data produced by hosts into a Hadoop cluster for later processing. By adopting Kafka as part of their pipeline they were able to reduce the average time needed to transfer logs from 4 hours to 10 seconds.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel" style="justify-content: center;">
+    <div class="col-md-7">
+      <h3 style="color: lightblue">Messaging</h3>
+      <p>
+        In a point-to-point system, messages are persisted in a queue. One or more consumers can consume the messages in the queue, but a particular message can be consumed by a maximum of one consumer only. Once a consumer reads a message in the queue, it disappears from that queue. The typical example of this system is an Order Processing System, where each order will be processed by one Order Processor, but Multiple Order Processors can work as well at the same time. The following diagram depicts the structure.
+      </p>
+      <p>
+        In the publish-subscribe system, messages are persisted in a topic. Unlike point-to-point system, consumers can subscribe to one or more topic and consume all the messages in that topic. In the Publish-Subscribe system, message producers are called publishers and message consumers are called subscribers. A real-life example is Dish TV, which publishes different channels like sports, movies, music, etc., and anyone can subscribe to their own set of channels and get them whenever their subscribed channels are available.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel" style="justify-content: center;">
+    <div class="col-md-7">
+      <h3 style="color: lightblue">Website Activity Tracking</h3>
+      <p>
+        The original use case for <span style="color: darkorange">Kafka</span>  was to be able to rebuild a user activity tracking pipeline as a set of real-time publish-subscribe feeds. This means site activity (page views, searches, or other actions users may take) is published to central topics with one topic per activity type. These feeds are available for subscription for a range of use cases including real-time processing, real-time monitoring, and loading into Hadoop or offline data warehousing systems for offline processing and reporting.
+      </p>
+      <p>
+        Activity tracking is often very high volume as many activity messages are generated for each user page view.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel" style="justify-content: center;">
+    <div class="col-md-7">
+      <h3 style="color: lightblue">Log Aggregation</h3>
+      <p>
+        Many people use <span style="color: darkorange">Kafka</span>  as a replacement for a log aggregation solution. Log aggregation typically collects physical log files off servers and puts them in a central place (a file server or HDFS perhaps) for processing. <span style="color: darkorange">Kafka</span>  abstracts away the details of files and gives a cleaner abstraction of log or event data as a stream of messages. This allows for lower-latency processing and easier support for multiple data sources and distributed data consumption. In comparison to log-centric systems like Scribe or Flume, <span style="color: darkorange">Kafka</span>  offers equally good performance, stronger durability guarantees due to replication, and much lower end-to-end latency.
+      </p>
+    </div>
+  </div>
+
+  <div class="panel" style="justify-content: center;">
+    <div class="col-md-7">
+      <h3 style="color: lightblue">Event Sourcing</h3>
+      <p>
+        Event sourcing is a style of application design where state changes are logged as a time-ordered sequence of records. <span style="color: darkorange">Kafka's</span> support for very large stored log data makes it an excellent backend for an application built in this style.
+      </p>
+    </div>
+  </div>
+
+
+  <!-- START OF EDIT -->
+  
+  <script src="https://cdn.jsdelivr.net/gh/google/code-prettify@master/loader/run_prettify.js"></script>
+  <style>
+  pre.prettyprint {
+    border: none !important;
+  }
+  </style>
+  
+  <div class="panel">
+    <div class="col-md-12">
+      <h1 style="font-size: 40px"><span style="color: #434A50">Tutorial</span> 
+      <!--<h2 style="font-size: 25px"><span style="color: lightgrey">& </span></h2>-->
+      </h1>
+      <hr class="mb-4">
+    </div>
+  </div>
+  
+  <div class="panel" style="justify-content: center;">
+    <div class="col-md-7">
+    
+      <h3 style="color: lightblue" id="tutorial">Kafka</h3>
+      
+      <p>The virtual machine provided in this demonstration has Kafka and Zookeeper preinstalled. The files for Kafka and Zookeeper reside in the <code>/apache</code> folder. It takes little effort to install each service and run the standalone version of Kafka or Zookeeper. </p>
+      
+      
+      <p id = "tab">To run Zookeeper alongside Tomcat, it's necessary to add the line <code>admin.serverPort=8081</code>
+      to our default <code> zoo.cfg </code> file. It's also necessary to add our hostname to the
+      <code>/etc/hosts</code> file, so that Kafka may know the address of the local host. </p>
+
+      <p> Like most software maintained by Apache, Kafka and Zookeeper come with <span style="color: darkorange">scripts</span> that perform basic
+      tasks. In the code below, the first command will start an instance of Zookeeper. The second command will start Kafka. </p>
+
+      <pre class="prettyprint" style = "font-size: 10pt;">
+      <code>
+zkServer.sh start
+kafka-server-start.sh $KAFKA_HOME/config/server.properties
+      </code>
+      </pre>
+
+      <p>Now that we've started Kafka and Zookeeper, it's possible to create a <span style="color: darkorange">topic</span>. The command bellow will create a topic named <code> data </code> on our standalone instance of Kafka. The data will not be <span style="color: darkorange">replicted</span> to other hosts, and the topic will not be sliced into <span style="color: darkorange">partitions</span>.
+      </p>
+
+      <pre class="prettyprint" style = "font-size: 10pt;">
+      <code>
+kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 1 --partitions 1 --topic data
+      </code>
+      </pre>
+
+      <p>To get the benefits of replication or topic partitioning, we need to add more <span style="color: darkorange">brokers</span> to our system. First, we need to create configuration files for each broker. Enter <code>cd $KAFKA_HOME/config</code> to find the Kafa configuration files, then type <code>cp server.properties server-1.properties</code> to create a copy of an existing configuration file. In each new file, make a distinct <code>broker.id</code>, <code>listeners</code>, and <code>log.dirs</code> for each broker.
+      </p>
+      
+      <p>Once we've created configuration files for our brokers, we need to start each one. Use <code>kafka-server-start.sh $KAFKA_HOME/config/</code> for each configuration file. We used the same process earlier
+      to start our first node. 
+      </p>
+
+      <p>Now that we have multiple brokers, we can create a topic with a replication factor greater than one.
+      Use the second command below to see the role of each broker on the topic.
+      </p>
+      
+      <pre class="prettyprint" style = "font-size: 10pt;">
+      <code>
+kafka-topics.sh --create --bootstrap-server localhost:9092 --replication-factor 3 --partitions 1 --topic replicated-data
+kafka-topics.sh --describe --bootstrap-server localhost:9092 --topic replicated-data
+      </code>
+      </pre>
+
+      <h3 style="color: lightblue">Spring Boot</h3>
+      
+      <p> This project uses <span style="color: darkorange">Spring Boot</span> to allow a web interface to communicate with Apache Kafka.
+      Spring is an application framework written in Java, but Spring Boot is a preconfigured version
+      of the Spring platform. </p> 
+      
+      <p>With Spring Boot, it's possible to create stand-alone applications that
+      may run an embeded <span style="color: darkorange">Tomcat</span> server. It provides a starter POM, which makes it easy to manage software dependencies through <span style="color: darkorange">Maven</span>. Spring Boot supports a <span style="color: darkorange">model view controller (MVC)</span> architecture, and you'll see this paradigm in the files written for this demonstration. </p>
+      
+      <p> 
+      It's beneficial to create a <span style="color: darkorange">consumer</span>, <span style="color: darkorange">producer</span>, and <span style="color: darkorange">topic</span> configuration classes for the topic we're using. This application already has configuration classes for the Data class in the <code>config/data</code> folder. The classes in this project have been configured to write json data.
+      </p>
+      
+      <p>
+      But, we'll create a configuration file to orchestrate the websocket traffic between our web client and Kafka. Open the file <code> config/WebSocketConfig.java </code> and add the following code. The first method creates <span style="color: darkorange">mappings</span> we can use to send or receive data. The second method creates an <span style="color: darkorange">endpoint</span> that our websocket will listen to.
+      </p>
+      
+      
+      <pre class="prettyprint" style = "font-size: 10pt;">
+      <code class="language-java">
+    @Override
+    public void configureMessageBroker(MessageBrokerRegistry config) {
+        config.enableSimpleBroker("/receive");
+        config.setApplicationDestinationPrefixes("/send");
+    }
+
+    @Override
+    public void registerStompEndpoints(StompEndpointRegistry registry) {
+        registry.addEndpoint("/websocket-traffic").withSockJS();
+    }
+      </code>
+      </pre>
+      
+      <p>
+      Next, we'll learn how to use <span style="color: darkorange">controllers</span> and <span style="color: darkorange">services</span> to connect Kafka to a website. 
+      Navigate to the <code>/controller/data</code> folder. Open the <code>DataWebSocketController</code> class, and add the code shown below. This creates a mapping to the address <code>/send/websocket-data</code>. Activity at this address will cause a Kafka producer to write data to a preconfigured topic.
+      </p>
+      
+      <p id = "tab">We don't need Kafka to relay messages through a websocket. We can always use <code>@SendTo()</code> to relay data to another address. But, Kafka provides a pipeline that multiple services can read from. If multiple services need to use data sent through a websocket, then it would be good to use Kafka to manage the data.</p>
+      
+      <pre class="prettyprint" style = "font-size: 10pt;">
+      <code class="language-java">
+  @Autowired 
+  private DataProducerService producer;
+      
+  @MessageMapping("/websocket-data")
+  public void messageSocketResponse(WebSocketTestSend message) throws Exception {
+    this.producer.produceData(new Data(HtmlUtils.htmlEscape(message.getMessage()),message.getValue()));
+    
+  }
+      </code>
+      </pre>
+      
+      <p>
+      We've set up the controller, and now we'll create a service that the producer will use to append data to a Kafka topic. Locate the <code>DataProducerService.java</code> file in the <code>/service/data</code> directory. Insert the code below into the class.
+      </p>
+      
+      <pre class="prettyprint" style = "font-size: 10pt;">
+      <code class="language-java">
+  @Value("${app.topic.data}")
+  private String topic;
+  
+  @Autowired
+  private KafkaTemplate<String, Data> template;
+
+  public void produceData(Data data){
+
+    Message<Data> message = MessageBuilder.withPayload(data).setHeader(KafkaHeaders.TOPIC, topic).build();
+    template.send(message);
+    
+  }
+      </code>
+      </pre>
+      
+      <p>Our application can produce data to a preconfigured topic. But,
+      we still need to create a service to consume topic updates. Add the following code to the <code> DataConsumerService </code>  class. The <span style="color: darkorange">KafkaListener</span> will run the <code> receive </code> method when our topic receives an update. In our application, it pushes updates to a websocket endpoint.</p>
+      
+      <pre class="prettyprint" style = "font-size: 10pt;">
+      <code class="language-java">
+    @Autowired
+    private SimpMessagingTemplate template;
+    
+    @KafkaListener(topics = "${app.topic.data}")
+    public void receive(@Payload Data data, @Headers MessageHeaders headers) {
+  
+        template.convertAndSend("/receive/websocket-data", data);
+        
+    }
+      </code>
+      </pre>
+      
+      <p>We've completed the steps needed to allow a Spring Boot application to communicate with Kafka. Now, we need to write the Javascript code that the website will use to transmit data. Navigate to the <code>kafka-spring-final/src/main/resources/</code> directory and open <code> app.js </code>. Find the <code> socketConnect() </code> method and add the code below. This code will allow the website to create a connection to the address we defined in our controller. Once we're connected, it will subscribe to the  <span style="color: darkorange">KafkaListener</span> we created.</p>
+      
+      <pre class="prettyprint" style = "font-size: 10pt;">
+      <code class="language-javascript">
+  var socket = new SockJS('/websocket-traffic');
+  stompClient = Stomp.over(socket);
+  
+  stompClient.connect({}, function (frame) {
+    
+    $("#connect-button").prop('disabled', true); 
+    
+    stompClient.subscribe('/receive/websocket-data', function (data) {
+      showData(JSON.parse(data.body).value,JSON.parse(data.body).content);
+    });
+    
+  });
+      </code>
+      </pre>
+      
+      <p>The website can subscribe to topic updates, but it still needs the ability to transmit updates. Add the following code to the <code> sendSocketMessage() </code> method in the <code> app.js </code> file. With this code, the website will send <span style="color: darkorange">JSON</span> formatted data to the address we defined in our <span style="color: darkorange">DataWebSocketController</span> class. </p>
+      
+      <pre class="prettyprint" style = "font-size: 10pt;">
+      <code class="language-java">
+stompClient.send("/send/websocket-data", {}, JSON.stringify({'value': $("#socket-value-input").val(),'message': $("#socket-content-input").val()}));
+      </code>
+      </pre>
+      
+    </div>
+  </div>
+  
+  
+  
+  <!-- END OF EDIT -->
+
+
+
+</section>
+<!-- partial -->
+  <script  src="./script.js"></script>
+
+</body>
+</html>
