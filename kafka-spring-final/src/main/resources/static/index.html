@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html>
+  
+  <head>
+    
+    <title>Kafka Final Project Demonstration</title>
+    
+    <link href="/webjars/bootstrap/css/bootstrap.min.css" rel="stylesheet">
+    <script src="/webjars/jquery/jquery.min.js"></script>
+    <script src="/webjars/sockjs-client/sockjs.min.js"></script>
+    <script src="/webjars/stomp-websocket/stomp.min.js"></script>
+    <script src="/app.js"></script>
+    
+    <style>
+      
+      .make-margin {
+        margin: 10px; 
+      }
+      
+      .make-padding {
+        padding: 10px; 
+      }
+      
+    </style>
+    
+  </head>
+  
+  <body>
+    
+    <div class = "container make-padding">
+ 
+      <div class = "row">
+        
+        <div class = "col-md-6 make-padding">
+          
+          <form id="socket-connect">
+            <button class="btn btn-secondary w-100" id="connect-button" type="submit"> Connect </button>
+          </form>
+          
+        </div>
+       
+        <div class = "col-md-6 make-padding"> 
+        
+          <form id="socket-disconnect">
+            <button class="btn btn-secondary w-100" id="disconnect-button" type="submit"> Disconnect </button>
+          </form>
+  
+        </div>
+        
+      </div>
+      
+      <div class = "row justify-content-center">
+     
+        <!--
+        <div class = "col-md-6 make-padding">
+         
+          <form id = "kafka-rest-form">
+            
+            <input type="text" class="form-control mt-2" id="rest-value-input" name = "value" placeholder="REST Value">
+            <input type="text" class="form-control mt-2" id="rest-content-input" name = "content" placeholder="REST Content">
+            
+            <button class="btn btn-secondary w-100 mt-2" type="submit"> Send </button>
+            
+          </form>
+          
+        </div>-->
+        
+        <div class = "col-md-9 make-padding">
+          
+          <form id = "kafka-socket-form">
+            
+            <input type="hidden" value = "0" class="form-control mt-2" id="socket-value-input" name = "value" placeholder="Socket Value">
+    
+            <div class="input-group mb-3">
+            <input type="text" class="form-control mt-2" id="socket-content-input" name = "content" placeholder="Socket Content" aria-label="Socket Content" aria-describedby="button-addon">
+            <div class="input-group-append">
+              <button class="btn btn-outline-secondary mt-2" type="submit" id="button-addon">Send</button>
+            </div>
+            </div>
+            
+          </form>
+          
+          
+          
+        </div>
+        
+      </div>
+      
+      <div class = "row justify-content-center">
+        
+        <div class = "col-md-12 make-padding overflow-auto">
+          <!--<div ></div>-->
+          
+          <table class="table table-striped">
+            
+            <thead>
+              <tr>
+                <th scope="col">Message Origin</th>
+                <th scope="col">Message Content</th>
+              </tr>
+            </thead>
+            <tbody id ="websocket-message">
+              
+            </tbody>
+       
+          </table>
+          
+        </div>
+        
+      </div>
+      
+    </div>
+    
+  </body>
+
+</html>

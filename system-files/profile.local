@@ -1,0 +1,6 @@
+
+export CASSANDRA_HOME="/apache/cassandra/apache-cassandra-3.11.5"
+export KAFKA_HOME="/apache/kafka/kafka_2.12-2.3.1"
+export ZOOKEEPER_HOME="/apache/zookeeper/apache-zookeeper-3.5.6-bin"
+
+export PATH="$PATH:$CASSANDRA_HOME/bin:$KAFKA_HOME/bin:$KAFKA_HOME/config:$ZOOKEEPER_HOME/bin"
